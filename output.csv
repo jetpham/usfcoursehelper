@@ -1,0 +1,170 @@
+ID,Term,Term Description,Course Reference Number,Part of Term,Course Number,Subject,Subject Description,Sequence Number,Campus Description,Schedule Type Description,Course Title,Credit Hours,Maximum Enrollment,Enrollment,Seats Available,Wait Capacity,Wait Count,Wait Available,Cross List,Cross List Capacity,Cross List Count,Cross List Available,Credit Hour High,Credit Hour Low,Credit Hour Indicator,Open Section,Link Identifier,Is Section Linked,Subject Course,Instructional Method,Instructional Method Description
+157788,202530,Summer 2025,30152,1,401,ADVT,Advertising,01,Online,Fieldwork,Advertising Internship,,40,0,40,0,0,0,A2,40,0,40,,4,,true,,false,ADVT401,RE,Online Synchronous
+157789,202530,Summer 2025,30153,1,402,ADVT,Advertising,01,Online,Fieldwork,Industry Internship,,40,0,40,0,0,0,A2,40,0,40,,4,,true,,false,ADVT402,RE,Online Synchronous
+157923,202530,Summer 2025,30206,M27,280,ANTH,Anthropology,01,Alaska-Sitka,Fieldwork,"Alaska: Culture, Environment and Tourism",,12,0,12,0,0,0,,,,,,4,,true,,false,ANTH280,IP,In-Person
+157065,202530,Summer 2025,30035,1,103,ART,Art,01,Online,Studio,Drawing for Non-Majors,,16,0,16,0,0,0,,,,,,4,,true,,false,ART103,RE,Online Synchronous
+157790,202530,Summer 2025,30154,4,103,ART,Art,02,Online,Studio,Drawing for Non-Majors,,16,0,16,0,0,0,,,,,,4,,true,,false,ART103,RE,Online Synchronous
+157791,202530,Summer 2025,30155,2,103,ART,Art,03,Online,Studio,Drawing for Non-Majors,,16,0,16,0,0,0,,,,,,4,,true,,false,ART103,IP,In-Person
+157792,202530,Summer 2025,30156,1,270,ART,Art,01,Hilltop,Studio,Ceramics I,,14,0,14,0,0,0,,,,,,4,,true,,false,ART270,IP,In-Person
+158016,202530,Summer 2025,30226,1,103,BIOL,Biology,01,Hilltop,Lecture,Human Biology,,0,0,0,0,0,0,,,,,,4,,false,,false,BIOL103,OL,Online Asynchronous
+157211,202530,Summer 2025,30061,4,201,BUS,Business Administration,01,Hilltop,Lecture,Principles of Financial Accounting,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS201,RE,Online Synchronous
+157212,202530,Summer 2025,30062,5,202,BUS,Business Administration,01,Hilltop,Lecture,Principles of Managerial Accounting,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS202,RE,Online Synchronous
+157213,202530,Summer 2025,30063,2,204,BUS,Business Administration,01,Hilltop,Lecture,Foundations of Analytics,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS204,RE,Online Synchronous
+157214,202530,Summer 2025,30064,2,205,BUS,Business Administration,01,Hilltop,Lecture,Applied Business Technology,,30,0,30,0,0,0,,,,,,2,,true,,false,BUS205,RE,Online Synchronous
+157215,202530,Summer 2025,30065,3,302,BUS,Business Administration,01,Hilltop,Lecture,Marketing Principles,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS302,OL,Online Asynchronous
+157216,202530,Summer 2025,30066,2,304,BUS,Business Administration,01,Hilltop,Lecture,Foundations of Organizational Behavior,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS304,OL,Online Asynchronous
+157217,202530,Summer 2025,30067,4,305,BUS,Business Administration,01,Hilltop,Lecture,Principles of Finance,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS305,RE,Online Synchronous
+157218,202530,Summer 2025,30068,3,308,BUS,Business Administration,01,Hilltop,Lecture,Systems in Organizations,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS308,RE,Online Synchronous
+157364,202530,Summer 2025,30112,5,333,BUS,Business Administration,01,Hilltop,Lecture,Financial Statement Analysis,,30,0,30,15,0,15,,,,,,4,,true,,false,BUS333,IP,In-Person
+157219,202530,Summer 2025,30069,4,403,BUS,Business Administration,01,Hilltop,Lecture,Entrepreneurial Strategy,,30,0,30,0,0,0,,,,,,4,,true,,false,BUS403,RE,Online Synchronous
+157282,202530,Summer 2025,30093,M29,640,CEL,Catholic Educational Leadershi,01,Hilltop,Seminar,History and Principles of Catholic Education,,24,0,24,0,0,0,AG,24,0,24,,3,,true,,false,CEL640,IP,In-Person
+157359,202530,Summer 2025,30108,M20,698,CEL,Catholic Educational Leadershi,01,Hilltop,Seminar,SpTp: Operation Vitality,3,24,0,24,0,0,0,AK,24,0,24,3,1,TO,true,,false,CEL698,IP,In-Person
+157283,202530,Summer 2025,30094,M29,740,CEL,Catholic Educational Leadershi,01,Hilltop,Seminar,History and Principles of Catholic Education,,24,0,24,0,0,0,AG,24,0,24,,3,,true,,false,CEL740,IP,In-Person
+157360,202530,Summer 2025,30109,M20,798,CEL,Catholic Educational Leadershi,01,Hilltop,Seminar,SpTp: Operation Vitality,3,24,0,24,0,0,0,AK,24,0,24,3,1,TO,true,,false,CEL798,IP,In-Person
+157994,202530,Summer 2025,30219,2,113,CHEM,Chemistry,01,Hilltop,Lecture,General Chemistry II,,30,0,30,0,0,0,,,,,,3,,true,,false,CHEM113,IP,In-Person
+157995,202530,Summer 2025,30220,2,114,CHEM,Chemistry,01,Hilltop,Lab,General Chemistry II Lab,,18,0,18,0,0,0,,,,,,1,,true,,false,CHEM114,IP,In-Person
+157996,202530,Summer 2025,30221,2,230,CHEM,Chemistry,01,Hilltop,Lecture,Organic Chemistry I,,30,0,30,0,0,0,,,,,,3,,true,,false,CHEM230,IP,In-Person
+157997,202530,Summer 2025,30222,3,231,CHEM,Chemistry,01,Hilltop,Lecture,Organic Chemistry II,,35,0,35,0,0,0,,,,,,4,,true,,false,CHEM231,IP,In-Person
+157794,202530,Summer 2025,30158,2,107,CS,Computer Science,01,Online,Lecture,"Computing, Mobile Apps, and the Web",,30,0,30,0,0,0,,,,,,4,,true,,false,CS107,RE,Online Synchronous
+157793,202530,Summer 2025,30157,1,110,CS,Computer Science,01,Online,Lecture,Introduction to Computer Science I,,30,0,30,0,0,0,,,,,,4,,true,,false,CS110,RE,Online Synchronous
+157796,202530,Summer 2025,30160,1,111,CS,Computer Science,01,Online,Lecture,Foundations of Program Design,,25,0,25,0,0,0,,,,,,4,,true,,false,CS111,RE,Online Synchronous
+157795,202530,Summer 2025,30159,3,112,CS,Computer Science,01,Online,Lecture,Computer Science II: Intermediate Java Programming and Design,,30,0,30,0,0,0,,,,,,4,,true,,false,CS112,RE,Online Synchronous
+157798,202530,Summer 2025,30162,1,245,CS,Computer Science,01,Hilltop,Lecture,Data Struct &amp; Algorithms,,25,0,25,0,0,0,,,,,,4,,true,,false,CS245,HY,Hybrid
+157797,202530,Summer 2025,30161,1,386,CS,Computer Science,01,Online,Lecture,Special topics in Computer Science,,20,0,20,0,0,0,,,,,4,1,TO,true,,false,CS386,RE,Online Synchronous
+157799,202530,Summer 2025,30163,1,590,CS,Computer Science,01,Online,Capstone,Practical Software Development,,20,0,20,0,0,0,,,,,,2,,true,,false,CS590,RE,Online Synchronous
+157174,202530,Summer 2025,30049,M30,600,CPSY,Counseling Psychology,01,Hilltop,Seminar,Foundations of School Counseling,,32,0,32,0,0,0,,,,,,3,,true,,false,CPSY600,HY,Hybrid
+157173,202530,Summer 2025,30048,M22,618,CPSY,Counseling Psychology,01,Hilltop,Seminar,Law and Ethics,,32,0,32,0,0,0,,,,,,3,,true,,false,CPSY618,HY,Hybrid
+157175,202530,Summer 2025,30050,M13,623,CPSY,Counseling Psychology,01,Hilltop,Seminar,Trauma and Crisis Counseling in Urban and Multicultural Contexts,,32,0,32,0,0,0,,,,,,3,,true,,false,CPSY623,HY,Hybrid
+156864,202530,Summer 2025,30010,2,630,CPSY,Counseling Psychology,01,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+156865,202530,Summer 2025,30011,2,630,CPSY,Counseling Psychology,02,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+156866,202530,Summer 2025,30012,2,630,CPSY,Counseling Psychology,03,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+156867,202530,Summer 2025,30013,2,630,CPSY,Counseling Psychology,04,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+156868,202530,Summer 2025,30014,2,630,CPSY,Counseling Psychology,05,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+157138,202530,Summer 2025,30036,2,630,CPSY,Counseling Psychology,06,Hilltop,Seminar,Individual and Systems Assessment,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY630,HY,Hybrid
+157176,202530,Summer 2025,30051,M23,639,CPSY,Counseling Psychology,01,Hilltop,Seminar,Individual and Family Psychopathology,,32,0,32,0,0,0,,,,,,3,,true,,false,CPSY639,HY,Hybrid
+156869,202530,Summer 2025,30015,2,640,CPSY,Counseling Psychology,01,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+156870,202530,Summer 2025,30016,2,640,CPSY,Counseling Psychology,02,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+156871,202530,Summer 2025,30017,2,640,CPSY,Counseling Psychology,03,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+156872,202530,Summer 2025,30018,2,640,CPSY,Counseling Psychology,04,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+156873,202530,Summer 2025,30019,2,640,CPSY,Counseling Psychology,05,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+157139,202530,Summer 2025,30037,2,640,CPSY,Counseling Psychology,06,Hilltop,Seminar,Relationship Therapy,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY640,HY,Hybrid
+157267,202530,Summer 2025,30088,M27,640,CPSY,Counseling Psychology,20,San Jose City College,Seminar,Relationship Therapy,,24,0,24,0,0,0,,,,,,3,,true,,false,CPSY640,IP,In-Person
+156874,202530,Summer 2025,30020,2,650,CPSY,Counseling Psychology,01,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+156875,202530,Summer 2025,30021,2,650,CPSY,Counseling Psychology,02,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+156876,202530,Summer 2025,30022,2,650,CPSY,Counseling Psychology,03,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+156877,202530,Summer 2025,30023,2,650,CPSY,Counseling Psychology,04,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+156878,202530,Summer 2025,30024,2,650,CPSY,Counseling Psychology,05,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+157142,202530,Summer 2025,30038,2,650,CPSY,Counseling Psychology,06,Hilltop,Seminar,Trauma and Crisis Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+157266,202530,Summer 2025,30087,M06,650,CPSY,Counseling Psychology,20,San Jose City College,Seminar,Trauma and Crisis Counseling,,24,0,24,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+157744,202530,Summer 2025,30126,M06,650,CPSY,Counseling Psychology,24,Santa Rosa Junior College,Seminar,Trauma and Crisis Counseling,,30,0,30,0,0,0,,,,,,3,,true,,false,CPSY650,IP,In-Person
+156899,202530,Summer 2025,30025,2,654,CPSY,Counseling Psychology,01,Hilltop,Seminar,Career Counseling,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY654,HY,Hybrid
+156918,202530,Summer 2025,30026,2,654,CPSY,Counseling Psychology,02,Hilltop,Seminar,Career Counseling,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY654,HY,Hybrid
+156921,202530,Summer 2025,30027,2,665,CPSY,Counseling Psychology,01,Hilltop,Seminar,Substance Abuse and Addictions Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY665,IP,In-Person
+156922,202530,Summer 2025,30028,2,665,CPSY,Counseling Psychology,02,Hilltop,Seminar,Substance Abuse and Addictions Counseling,,20,0,20,0,0,0,,,,,,3,,true,,false,CPSY665,IP,In-Person
+156923,202530,Summer 2025,30029,2,683,CPSY,Counseling Psychology,01,Hilltop,Seminar,Clinical Psychopharmacology,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY683,HY,Hybrid
+156924,202530,Summer 2025,30030,2,683,CPSY,Counseling Psychology,02,Hilltop,Seminar,Clinical Psychopharmacology,,22,0,22,0,0,0,,,,,,3,,true,,false,CPSY683,HY,Hybrid
+157710,202530,Summer 2025,30121,2,631,MSDS,Data Science (MS),01,San Francisco-Downtown,Lecture,Special Topics in AI II,,50,0,50,0,0,0,,,,,2,1,TO,true,,false,MSDS631,IP,In-Person
+157711,202530,Summer 2025,30122,2,631,MSDS,Data Science (MS),02,San Francisco-Downtown,Lecture,Special Topics in AI II,,50,0,50,0,0,0,,,,,2,1,TO,true,,false,MSDS631,IP,In-Person
+157712,202530,Summer 2025,30123,2,632,MSDS,Data Science (MS),01,San Francisco-Downtown,Fieldwork,Data Science Practicum IV,,100,0,100,0,0,0,,,,,,1,,true,,false,MSDS632,IP,In-Person
+157713,202530,Summer 2025,30124,2,644,MSDS,Data Science (MS),01,San Francisco-Downtown,Seminar,Seminar Series V,,100,0,100,0,0,0,,,,,,0,,true,,false,MSDS644,IP,In-Person
+157800,202530,Summer 2025,30164,3,112,ECON,Economics,01,Online,Lecture,Principles of Macroeconomics,,40,0,40,0,0,0,,,,,,4,,true,,false,ECON112,IP,In-Person
+157758,202530,Summer 2025,30131,M35,607,ETK,Educational Technology,01,Hilltop,Studio,Learning Designs,,13,0,13,0,0,0,AN,13,0,13,,3,,true,,false,ETK607,HY,Hybrid
+157759,202530,Summer 2025,30132,M35,607,ETK,Educational Technology,50,Online,Studio,Learning Designs,,13,0,13,0,0,0,AN,13,0,13,,3,,true,,false,ETK607,OL,Online Asynchronous
+157760,202530,Summer 2025,30133,M17,611,ETK,Educational Technology,01,Hilltop,Capstone,ETK Capstone Project,,13,0,13,0,0,0,AO,13,0,13,,3,,true,,false,ETK611,HY,Hybrid
+157761,202530,Summer 2025,30134,M17,611,ETK,Educational Technology,50,Online,Capstone,ETK Capstone Project,,13,0,13,0,0,0,AO,13,0,13,,3,,true,,false,ETK611,OL,Online Asynchronous
+157961,202530,Summer 2025,30214,3,202,ENGL,English,01,Online,Lecture,"LW: Romance, Revolution, Exile",,40,0,40,0,0,0,,,,,,4,,true,,false,ENGL202,OL,Online Asynchronous
+157801,202530,Summer 2025,30165,2,221,ENGL,English,01,Online,Studio,Poetry Studio for Non-Majors,,20,0,20,0,0,0,,,,,,4,,true,,false,ENGL221,OL,Online Asynchronous
+157802,202530,Summer 2025,30166,3,221,ENGL,English,02,Online,Studio,Poetry Studio for Non-Majors,,20,0,20,0,0,0,,,,,,4,,true,,false,ENGL221,OL,Online Asynchronous
+157804,202530,Summer 2025,30168,2,100,ENVS,Environmental Science,01,Online,Lecture,Understanding our Environment w/lab,,32,0,32,0,0,0,,,,,,4,,true,,false,ENVS100,OL,Online Asynchronous
+157805,202530,Summer 2025,30169,3,100,ENVS,Environmental Science,02,Online,Lecture,Understanding our Environment w/lab,,32,0,32,0,0,0,,,,,,4,,true,,false,ENVS100,OL,Online Asynchronous
+157806,202530,Summer 2025,30170,2,100L,ENVS,Environmental Science,11,Online,Lab,Laboratory,,16,0,16,0,0,0,,,,,,0,,true,,false,ENVS100L,OL,Online Asynchronous
+157807,202530,Summer 2025,30171,2,100L,ENVS,Environmental Science,12,Online,Lab,Laboratory,,16,0,16,0,0,0,,,,,,0,,true,,false,ENVS100L,OL,Online Asynchronous
+157808,202530,Summer 2025,30172,3,100L,ENVS,Environmental Science,13,Online,Lab,Laboratory,,16,0,16,0,0,0,,,,,,0,,true,,false,ENVS100L,OL,Online Asynchronous
+157809,202530,Summer 2025,30173,3,100L,ENVS,Environmental Science,14,Online,Lab,Laboratory,,16,0,16,0,0,0,,,,,,0,,true,,false,ENVS100L,OL,Online Asynchronous
+157803,202530,Summer 2025,30167,3,245,ENVA,Environmental Studies,01,Hilltop,Fieldwork,Comm Garden Outreach,,20,0,20,0,0,0,,,,,,4,,true,,false,ENVA245,IP,In-Person
+157349,202530,Summer 2025,30104,M34,201,FREN,French,01,France-Paris,Lecture,Third Semester French,,20,0,20,0,0,0,,,,,,4,,true,,false,FREN201,IP,In-Person
+156926,202530,Summer 2025,30031,2,603,GEDU,General Education,01,Online,Capstone,Methodology of Educational Research,,13,0,13,0,0,0,AJ,13,0,13,,3,,true,,false,GEDU603,RE,Online Synchronous
+157810,202530,Summer 2025,30174,2,126,HIST,History,01,Online,Lecture,Asian American History,,40,0,40,0,0,0,,,,,,4,,true,,false,HIST126,RE,Online Synchronous
+157351,202530,Summer 2025,30106,M33,103,HONC,Honors College,01,Hungary-Budapest,Lecture,Photographing Global Justice,,20,0,20,0,0,0,,,,,,2,,true,,false,HONC103,IP,In-Person
+156797,202530,Summer 2025,30008,2,672,MSIS,Information Systems-Master,01,San Francisco-Downtown,Lecture,Data Architecture &amp; Management,,30,0,30,0,0,0,,,,,,3,,true,,false,MSIS672,IP,In-Person
+156801,202530,Summer 2025,30009,3,683,MSIS,Information Systems-Master,01,San Francisco-Downtown,Fieldwork,Practical Application,,30,0,30,0,0,0,,,,,,1,,true,,false,MSIS683,IP,In-Person
+157465,202530,Summer 2025,30118,M11,395,INTD,Interdisciplinary Studies,01,Austria-Salzburg,Seminar,Leadership and  Global Citizen,3,24,0,24,0,0,0,AL,24,0,24,4,2,TO,true,,false,INTD395,IP,In-Person
+157170,202530,Summer 2025,30045,M04,611,IME,International and Multicultura,01,Online,Seminar,Language and Culture,,24,0,24,0,0,0,AD,24,0,24,,3,,true,,false,IME611,RE,Online Synchronous
+157166,202530,Summer 2025,30041,2,698,IME,International and Multicultura,01,Online,Seminar,SpTp: Literature Review,3,24,0,24,0,0,0,AC,24,0,24,3,1,TO,true,,false,IME698,RE,Online Synchronous
+157171,202530,Summer 2025,30046,M04,711,IME,International and Multicultura,01,Online,Seminar,Language and Culture,,24,0,24,0,0,0,AD,24,0,24,,3,,true,,false,IME711,RE,Online Synchronous
+157167,202530,Summer 2025,30042,2,798,IME,International and Multicultura,01,Online,Seminar,SpTp: Literature review,3,24,0,24,0,0,0,AC,24,0,24,3,1,TO,true,,false,IME798,RE,Online Synchronous
+157972,202530,Summer 2025,30217,4,131,JSSJ,Jewish Studies /Social Justice,01,Online,Fieldwork,Queering Religion (CEL),,21,0,21,0,0,0,A3,21,0,21,,4,,true,,false,JSSJ131,RE,Online Synchronous
+157180,202530,Summer 2025,30054,M26,636,L&I,Learning and Instruction,01,Hilltop,Studio,Educational Practices for the Learning Specialist,,10,0,10,0,0,0,,,,,,3,,true,,false,L&I636,IP,In-Person
+157177,202530,Summer 2025,30052,M41,637,L&I,Learning and Instruction,01,Hilltop,Fieldwork,Teaching Diverse Groups,,24,0,24,0,0,0,,,,,,2,,true,,false,L&I637,IP,In-Person
+157338,202530,Summer 2025,30103,2,641,L&I,Learning and Instruction,01,Online,Lecture,Research in Special Education,,13,0,13,0,0,0,AJ,13,0,13,,3,,true,,false,L&I641,RE,Online Synchronous
+157178,202530,Summer 2025,30053,M05,665,L&I,Learning and Instruction,01,Hilltop,Seminar,Development of Legal and Educational Foundations for the Learning Specialist,,24,0,24,0,0,0,,,,,,3,,true,,false,L&I665,IP,In-Person
+156788,202530,Summer 2025,30007,2,513,MSEI,MS Entrepreneurship Innovation,01,San Francisco-Downtown,Lecture,Life Science Innovation &amp; Commercialization,,50,0,50,0,0,0,,,,,,2,,true,,false,MSEI513,IP,In-Person
+156787,202530,Summer 2025,30006,2,602,MSEI,MS Entrepreneurship Innovation,01,San Francisco-Downtown,Lecture,Entrepreneurial Law,,50,0,50,0,0,0,,,,,,2,,true,,false,MSEI602,IP,In-Person
+156786,202530,Summer 2025,30005,2,606,MSEI,MS Entrepreneurship Innovation,01,San Francisco-Downtown,Internship,Practicum: New Venture Launch,,50,0,50,0,0,0,,,,,,4,,true,,false,MSEI606,IP,In-Person
+156767,202530,Summer 2025,30001,2,611,MSMI,Marketing Intelligence,01,San Francisco-Downtown,Lecture,Ethics &amp; Public Policy &amp; MI,,13,0,13,0,0,0,,,,,,2,,true,,false,MSMI611,IP,In-Person
+156768,202530,Summer 2025,30002,2,611,MSMI,Marketing Intelligence,02,San Francisco-Downtown,Lecture,Ethics &amp; Public Policy &amp; MI,,13,0,13,0,0,0,,,,,,2,,true,,false,MSMI611,IP,In-Person
+156769,202530,Summer 2025,30004,2,611,MSMI,Marketing Intelligence,03,San Francisco-Downtown,Lecture,Ethics &amp; Public Policy &amp; MI,,13,0,13,0,0,0,,,,,,2,,true,,false,MSMI611,IP,In-Person
+157811,202530,Summer 2025,30175,3,101,MATH,Mathematics,01,Online,Lecture,Elementary Statistics,,35,0,35,0,0,0,,,,,,4,,true,,false,MATH101,RE,Online Synchronous
+157884,202530,Summer 2025,30205,4,690,MIMS,Migration Studies,01,Spain-Morocco,Lecture,SpTp: Migrants Spain Morocco,,15,0,15,0,0,0,,,,,4,1,TO,true,,false,MIMS690,IP,In-Person
+157812,202530,Summer 2025,30176,2,203,MUS,Music,01,Online,Seminar,Music and Social Protest,,30,0,30,0,0,0,,,,,,4,,true,,false,MUS203,OL,Online Asynchronous
+157813,202530,Summer 2025,30177,3,203,MUS,Music,02,Online,Seminar,Music and Social Protest,,30,0,30,0,0,0,,,,,,4,,true,,false,MUS203,OL,Online Asynchronous
+157361,202530,Summer 2025,30110,M11,600,O&L,Organization and Leadership,01,Austria-Salzburg,Seminar,Leadership and Becoming a Global Citizen,,24,0,24,0,0,0,AL,24,0,24,,3,,true,,false,O&L600,IP,In-Person
+157279,202530,Summer 2025,30090,4,607,O&L,Organization and Leadership,01,Online,Seminar,Impact and Assessment,,24,0,24,0,0,0,,,,,,3,,true,,false,O&L607,RE,Online Synchronous
+156932,202530,Summer 2025,30034,3,644,O&L,Organization and Leadership,01,Online,Seminar,Academic &amp; Student Affairs in Higher Education,,24,0,24,0,0,0,AF,24,0,24,,3,,true,,false,O&L644,RE,Online Synchronous
+157284,202530,Summer 2025,30095,4,670,O&L,Organization and Leadership,01,Hilltop,Seminar,Ethical Organization,,24,0,24,0,0,0,AH,24,0,24,,3,,true,,false,O&L670,HY,Hybrid
+157575,202530,Summer 2025,30119,2,698,O&L,Organization and Leadership,01,Hilltop,Seminar,SpTp:Cult Comp Workplace,3,24,0,24,0,0,0,AM,24,0,24,3,1,TO,true,,false,O&L698,IP,In-Person
+157362,202530,Summer 2025,30111,M11,700,O&L,Organization and Leadership,01,Austria-Salzburg,Seminar,Leadership and Global Citizen,,24,0,24,0,0,0,AL,24,0,24,,3,,true,,false,O&L700,IP,In-Person
+157280,202530,Summer 2025,30091,4,707,O&L,Organization and Leadership,01,Online,Seminar,Impact and Assessment,,24,0,24,0,0,0,,,,,,3,,true,,false,O&L707,RE,Online Synchronous
+157281,202530,Summer 2025,30092,4,744,O&L,Organization and Leadership,01,Online,Seminar,Academic and Student Affairs in Higher Education,,24,0,24,0,0,0,AF,24,0,24,,3,,true,,false,O&L744,RE,Online Synchronous
+157285,202530,Summer 2025,30096,4,770,O&L,Organization and Leadership,01,Hilltop,Seminar,Ethical Organization,,24,0,24,0,0,0,AH,24,0,24,,3,,true,,false,O&L770,HY,Hybrid
+157576,202530,Summer 2025,30120,2,798,O&L,Organization and Leadership,01,Hilltop,Seminar,SpTp:Cult Comp Workplace,3,24,0,24,0,0,0,AM,24,0,24,3,1,TO,true,,false,O&L798,IP,In-Person
+157814,202530,Summer 2025,30178,3,209,PHIL,Philosophy,01,Online,Lecture,Aesthetics,,40,0,40,0,0,0,,,,,,4,,true,,false,PHIL209,OL,Online Asynchronous
+157815,202530,Summer 2025,30179,3,220,PHIL,Philosophy,01,Online,Lecture,Asian Philosophy,,40,0,40,0,0,0,,,,,,4,,true,,false,PHIL220,OL,Online Asynchronous
+157816,202530,Summer 2025,30180,3,240,PHIL,Philosophy,01,Online,Lecture,Ethics,,40,0,40,0,0,0,,,,,,4,,true,,false,PHIL240,OL,Online Asynchronous
+157817,202530,Summer 2025,30181,2,240,PHIL,Philosophy,02,Online,Lecture,Ethics,,40,0,40,0,0,0,,,,,,4,,true,,false,PHIL240,OL,Online Asynchronous
+157818,202530,Summer 2025,30182,2,251,PHIL,Philosophy,01,Online,Lecture,"Mind, Freedom &amp; Knowledge",,40,0,40,0,0,0,,,,,,4,,true,,false,PHIL251,OL,Online Asynchronous
+157819,202530,Summer 2025,30183,2,397,POLS,Politics,01,Hilltop,Fieldwork,Fieldwork in Pub Int Org,,20,0,20,0,0,0,,,,,,4,,true,,false,POLS397,IP,In-Person
+157838,202530,Summer 2025,30202,1,629,PC,Professional Communication,01,San Francisco-Downtown,Seminar,Reputation Management,,15,0,15,0,0,0,,,,,4,3,TO,true,,false,PC629,IP,In-Person
+157839,202530,Summer 2025,30203,1,692,PC,Professional Communication,01,San Francisco-Downtown,Seminar,Communication Consultancy,,12,0,12,0,0,0,,,,,4,3,TO,true,,false,PC692,IP,In-Person
+157840,202530,Summer 2025,30204,1,694,PC,Professional Communication,01,San Francisco-Downtown,Fieldwork,Internship,,12,0,12,0,0,0,,,,,4,1,TO,true,,false,PC694,IP,In-Person
+157820,202530,Summer 2025,30184,2,265,PSYC,Psychology,01,Hilltop,Lab,Research Design,,18,0,18,0,0,0,,,,,,4,,true,,false,PSYC265,IP,In-Person
+157821,202530,Summer 2025,30185,2,307,PSYC,Psychology,01,Online,Lecture,Cross-Cultural Psychology,,35,0,35,0,0,0,,,,,,4,,true,,false,PSYC307,RE,Online Synchronous
+157962,202530,Summer 2025,30215,2,319,PSYC,Psychology,01,Hilltop,Lecture,Cognitive Psychology,,18,0,18,0,0,0,,,,,,4,,true,,false,PSYC319,RE,Online Synchronous
+157822,202530,Summer 2025,30186,2,388,PSYC,Psychology,01,Online,Lab,Advanced Research Methods,,18,0,18,0,0,0,,,,,,4,,true,,false,PSYC388,RE,Online Synchronous
+157823,202530,Summer 2025,30187,1,396,PSYC,Psychology,01,Hilltop,Fieldwork,Psychology Practicum,,18,0,18,0,0,0,,,,,,4,,true,,false,PSYC396,IP,In-Person
+157824,202530,Summer 2025,30188,2,103,RHET,Rhetoric and Composition,01,Online,Lecture,Public Speaking,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET103,OL,Online Asynchronous
+157825,202530,Summer 2025,30189,3,103,RHET,Rhetoric and Composition,02,Online,Lecture,Public Speaking,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET103,OL,Online Asynchronous
+157826,202530,Summer 2025,30190,3,103,RHET,Rhetoric and Composition,03,Hilltop,Lecture,Public Speaking,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET103,IP,In-Person
+157828,202530,Summer 2025,30192,3,120,RHET,Rhetoric and Composition,02,Online,Lecture,Written Communication II,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET120,OL,Online Asynchronous
+157829,202530,Summer 2025,30193,2,120,RHET,Rhetoric and Composition,03,Online,Lecture,Written Communication II,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET120,OL,Online Asynchronous
+157830,202530,Summer 2025,30194,2,203,RHET,Rhetoric and Composition,01,Online,Lecture,Writing in Psychology,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET203,RE,Online Synchronous
+157831,202530,Summer 2025,30195,1,250,RHET,Rhetoric and Composition,01,Sacramento,Seminar,Academic Writing at USF,,22,0,22,0,0,0,,,,,,4,,true,,false,RHET250,HY,Hybrid
+157832,202530,Summer 2025,30196,2,150,SOC,Sociology,01,Online,Lecture,Intro to Sociology,,40,0,40,0,0,0,,,,,,4,,true,,false,SOC150,OL,Online Asynchronous
+157350,202530,Summer 2025,30105,M32,390,SPAN,Spanish,01,Spain-Bilbao,Lecture,SpTp: Spain Immersion,4,20,0,20,0,0,0,,,,,4,2,TO,true,,false,SPAN390,IP,In-Person
+157778,202530,Summer 2025,30142,M38,602,SM,Sport Management,01,San Francisco-Downtown,Lecture,Leadership and Critical Thinking in Sport Management,,40,0,40,0,0,0,,,,,,3,,true,,false,SM602,IP,In-Person
+157779,202530,Summer 2025,30143,M38,602,SM,Sport Management,21,Orange County,Lecture,Leadership and Critical Thinking in Sport Management,,40,0,40,0,0,0,,,,,,3,,true,,false,SM602,IP,In-Person
+157780,202530,Summer 2025,30144,M39,603,SM,Sport Management,01,San Francisco-Downtown,Lecture,Sport Law,,40,0,40,0,0,0,,,,,,2,,true,,false,SM603,IP,In-Person
+157781,202530,Summer 2025,30145,M39,603,SM,Sport Management,21,Orange County,Lecture,Sport Law,,40,0,40,0,0,0,,,,,,2,,true,,false,SM603,IP,In-Person
+157782,202530,Summer 2025,30146,M37,605,SM,Sport Management,01,San Francisco-Downtown,Lecture,Quantitative Analysis in Sport,,40,0,40,0,0,0,,,,,,3,,true,,false,SM605,IP,In-Person
+157783,202530,Summer 2025,30147,M37,606,SM,Sport Management,01,San Francisco-Downtown,Lecture,Strategic Management and Human Resources in Sport,,40,0,40,0,0,0,,,,,,3,,true,,false,SM606,IP,In-Person
+157784,202530,Summer 2025,30148,M39,607,SM,Sport Management,01,San Francisco-Downtown,Lecture,Accounting and Budgeting in Sport,,40,0,40,0,0,0,,,,,,3,,true,,false,SM607,IP,In-Person
+157785,202530,Summer 2025,30149,1,609,SM,Sport Management,31,Hilltop,Fieldwork,Applied Sport Internship,,100,0,100,0,0,0,,,,,,0,,true,,false,SM609,IP,In-Person
+157786,202530,Summer 2025,30150,M37,610,SM,Sport Management,01,San Francisco-Downtown,Lecture,Business Development and Sales in Sport,,40,0,40,0,0,0,,,,,,3,,true,,false,SM610,IP,In-Person
+157787,202530,Summer 2025,30151,M37,610,SM,Sport Management,21,Orange County,Lecture,Business Development and Sales in Sport,,40,0,40,0,0,0,,,,,,3,,true,,false,SM610,IP,In-Person
+157181,202530,Summer 2025,30055,M41,604,TEC,Teacher Education,01,Hilltop,Studio,Multiple Subject Curriculum &amp; Instruction: Math &amp; Science for Ed Specialist,,13,0,13,0,0,0,,,,,,3,,true,,false,TEC604,IP,In-Person
+157939,202530,Summer 2025,30208,M09,615,TEC,Teacher Education,20,San Jose City College,Studio,Single Subject Curriculum and Instruction I: Math or Science,,20,0,20,0,0,0,AP,20,0,20,,3,,true,,false,TEC615,IP,In-Person
+157182,202530,Summer 2025,30056,M19,621,TEC,Teacher Education,01,Hilltop,Studio,Multiple Subject Curriculum and Instruction: Early Literacy,,24,0,24,0,0,0,AR,24,0,24,,3,,true,,false,TEC621,RE,Online Synchronous
+157941,202530,Summer 2025,30210,3,632,TEC,Teacher Education,20,San Jose City College,Studio,Single Subject Curriculum and Instruction II: Math,,20,0,20,0,0,0,AQ,20,0,20,,2,,true,,false,TEC632,IP,In-Person
+157942,202530,Summer 2025,30211,3,633,TEC,Teacher Education,20,San Jose City College,Studio,Single Subject Curriculum and Instruction II: Science,,20,0,20,0,0,0,AQ,20,0,20,,2,,true,,false,TEC633,IP,In-Person
+157940,202530,Summer 2025,30209,3,634,TEC,Teacher Education,20,San Jose City College,Studio,Single Subject Curriculum and Instruction II:  Social Science,,20,0,20,0,0,0,AQ,20,0,20,,2,,true,,false,TEC634,IP,In-Person
+157251,202530,Summer 2025,30083,M11,642,TEC,Teacher Education,01,Hilltop,Seminar,Health Education,,24,0,24,0,0,0,,,,,,1,,true,,false,TEC642,HY,Hybrid
+157252,202530,Summer 2025,30084,M01,665,TEC,Teacher Education,01,Hilltop,Studio,Fluency and Comprehension for Linguistic Diverse Learners,,13,0,13,0,0,0,,,,,,3,,true,,false,TEC665,HY,Hybrid
+157253,202530,Summer 2025,30085,M14,673,TEC,Teacher Education,01,Hilltop,Seminar,Curriculum: Currents and Controversies,,24,0,24,0,0,0,,,,,,3,,true,,false,TEC673,HY,Hybrid
+157249,202530,Summer 2025,30081,M15,674,TEC,Teacher Education,01,Hilltop,Capstone,Curriculum Development and Design,,13,0,13,0,0,0,,,,,,3,,true,,false,TEC674,HY,Hybrid
+157250,202530,Summer 2025,30082,M15,674,TEC,Teacher Education,02,Hilltop,Capstone,Curriculum Development and Design,,13,0,13,0,0,0,,,,,,3,,true,,false,TEC674,HY,Hybrid
+157971,202530,Summer 2025,30216,4,131,THRS,Theology and Religious Studies,01,Online,Seminar,Queering Religion (CEL),,21,0,21,0,0,0,A3,21,0,21,,4,,true,,false,THRS131,RE,Online Synchronous
+157833,202530,Summer 2025,30197,2,202,THRS,Theology and Religious Studies,01,Online,Lecture,Portraits of Christ: An Introduction to the Four Gospels.,,40,0,40,0,0,0,,,,,,4,,true,,false,THRS202,OL,Online Asynchronous
+157834,202530,Summer 2025,30198,4,306,THRS,Theology and Religious Studies,01,Hilltop,Lecture,Theology in HIV/AIDS Contexts,,40,0,40,0,0,0,,,,,,4,,true,,false,THRS306,IP,In-Person
+157835,202530,Summer 2025,30199,2,367,THRS,Theology and Religious Studies,01,Hilltop,Lecture,Intro to Buddhism,,40,0,40,0,0,0,,,,,,4,,true,,false,THRS367,IP,In-Person
+157836,202530,Summer 2025,30200,3,388,THRS,Theology and Religious Studies,01,Hilltop,Lecture,"Religion, Psychology, Modern Literature",,40,0,40,0,0,0,,,,,,4,,true,,false,THRS388,IP,In-Person
+157837,202530,Summer 2025,30201,3,404,THRS,Theology and Religious Studies,01,Online,Lecture,Environmental Ethics,,40,0,40,0,0,0,,,,,,4,,true,,false,THRS404,OL,Online Asynchronous
