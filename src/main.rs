@@ -1,5 +1,4 @@
 use csv::Writer;
-use prettytable::{row, Table};
 use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -130,16 +129,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let url =
         "https://reg-prod.ec.usfca.edu/StudentRegistrationSsb/ssb/searchResults/searchResults";
     let mut params = HashMap::new();
-    params.insert("txt_term", "202530");
+    params.insert("txt_term", "202510");
     params.insert("startDatepicker", "");
     params.insert("endDatepicker", "");
-    params.insert("uniqueSessionId", "285np1730389737471");
     params.insert("pageOffset", "0");
     let unique_session_id = std::fs::read_to_string("uniqueSessionId.txt")?
         .trim()
         .to_string();
     params.insert("uniqueSessionId", &unique_session_id);
-    params.insert("pageMaxSize", "200");
     params.insert("sortColumn", "subjectDescription");
     params.insert("sortDirection", "asc");
 
@@ -195,7 +192,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let courses: Vec<Course> = response.data;
 
-    let mut table = Table::new();
     let mut wtr = Writer::from_writer(File::create("output.csv")?);
 
     // Write the header
