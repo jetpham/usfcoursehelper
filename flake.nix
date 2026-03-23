@@ -30,8 +30,6 @@
           cargoLock = {
             lockFile = ./Cargo.lock;
           };
-          nativeBuildInputs = with pkgs; [ pkg-config ];
-          buildInputs = with pkgs; [ openssl ];
         };
       in
       {
@@ -46,8 +44,6 @@
           packages = with pkgs; [
             rustToolchain
             cargo-edit
-            pkg-config
-            openssl
             rust-analyzer
           ];
 
