@@ -12,9 +12,12 @@ package_stem="$3"
 output_dir="$4"
 readme_path="${5:-}"
 
+mkdir -p "$output_dir"
+output_dir="$(cd "$output_dir" && pwd)"
+
 stage_root="$(mktemp -d)"
 package_dir="$stage_root/$package_stem"
-mkdir -p "$package_dir" "$output_dir"
+mkdir -p "$package_dir"
 
 cp "$binary_path" "$package_dir/$binary_name"
 
