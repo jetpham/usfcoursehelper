@@ -2,11 +2,13 @@ use anyhow::{anyhow, Context, Result};
 use clap::Parser;
 use chrono::{Datelike, Local, NaiveDate, NaiveDateTime, NaiveTime};
 use csv::Writer;
+use indicatif::{ProgressBar, ProgressStyle};
 use regex::Regex;
 use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, USER_AGENT};
 use serde::Deserialize;
 use std::collections::{BTreeMap, BTreeSet};
 use std::fs::{self, File};
+use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 const BASE_URL: &str = "https://reg-prod.ec.usfca.edu/StudentRegistrationSsb";
@@ -63,6 +65,7 @@ struct Course {
     part_of_term: Option<String>,
     course_number: Option<String>,
     subject: Option<String>,
+    subject_description: Option<String>,
     sequence_number: Option<String>,
     campus_description: Option<String>,
     schedule_type_description: Option<String>,
@@ -102,17 +105,18 @@ struct ScrapeConfig {
     #[arg(short, long, env = "SUBJECT_CODE")]
     subject: Option<String>,
 
-    #[arg(short, long, env = "OUTPUT_CSV", default_value = "output.csv")]
-    output_path: String,
+    #[arg(long, env = "OUTPUT_CSV", num_args = 0..=1, default_missing_value = ".")]
+    csv: Option<String>,
 
-    #[arg(long, env = "CALENDAR_DIR")]
-    calendar_dir: Option<String>,
+    #[arg(long, env = "CALENDAR_DIR", num_args = 0..=1, default_missing_value = ".")]
+    calendar: Option<String>,
 }
 
 #[tokio::main]
 async fn main() -> Result<()> {
     let config = read_config();
     let client = build_client()?;
+    let setup_progress = spinner("Loading USF term selection page");
 
     let term_page_html = client
         .get(format!("{BASE_URL}/ssb/term/termSelection?mode=search"))
@@ -120,14 +124,19 @@ async fn main() -> Result<()> {
         .await?
         .error_for_status()?
         .text()
-        .await?;
+        .await
+        .context("failed to read USF term selection page")?;
 
     let synchronizer_token = extract_synchronizer_token(&term_page_html)?;
     let unique_session_id = build_unique_session_id();
     let headers = build_ajax_headers(&synchronizer_token)?;
 
-    let terms = fetch_terms(&client, &headers).await?;
+    setup_progress.set_message("Fetching available USF terms");
+    let terms = fetch_terms(&client, &headers)
+        .await
+        .context("failed to fetch available USF terms")?;
     if config.list_terms || config.term_code.is_none() {
+        setup_progress.finish_and_clear();
         print_terms(&terms);
         return Ok(());
     }
@@ -135,15 +144,32 @@ async fn main() -> Result<()> {
     let requested_term_code = config.term_code.as_deref().unwrap_or_default();
 
     let selected_term = select_term(&terms, requested_term_code)?;
+    setup_progress.set_message(format!(
+        "Preparing session for {} ({})",
+        selected_term.description, selected_term.code
+    ));
 
-    save_term(&client, &headers, &selected_term.code, &unique_session_id).await?;
+    save_term(&client, &headers, &selected_term.code, &unique_session_id)
+        .await
+        .with_context(|| format!("failed to save term {}", selected_term.code))?;
     transition_to_search(
         &client,
         &headers,
         &selected_term.code,
         &unique_session_id,
     )
-    .await?;
+    .await
+    .with_context(|| format!("failed to start search session for {}", selected_term.code))?;
+
+    setup_progress.finish_with_message(format!(
+        "Session ready for {} ({})",
+        selected_term.description, selected_term.code
+    ));
+
+    let fetch_progress = progress_bar(&format!(
+        "Fetching sections for {}",
+        selected_term.description
+    ));
 
     let courses = fetch_all_courses(
         &client,
@@ -151,27 +177,81 @@ async fn main() -> Result<()> {
         &selected_term.code,
         &unique_session_id,
         config.subject.as_deref(),
+        &fetch_progress,
     )
-    .await?;
+    .await
+    .with_context(|| format!("failed while downloading sections for {}", selected_term.code))?;
 
-    write_csv(&config.output_path, &courses)?;
-
-    if let Some(calendar_dir) = config.calendar_dir.as_deref() {
-        write_subject_calendars(calendar_dir, &selected_term, &courses)?;
-    }
-
-    println!(
-        "Wrote {} sections{} for {} ({}) to {}",
+    fetch_progress.finish_with_message(format!(
+        "Fetched {} section rows{} for {}",
         courses.len(),
         config
             .subject
             .as_deref()
-            .map(|subject| format!(" for subject {subject}"))
+            .map(|subject| format!(" in subject {subject}"))
             .unwrap_or_default(),
-        selected_term.description,
-        selected_term.code,
-        config.output_path
-    );
+        selected_term.description
+    ));
+
+    if let Some(csv_dir) = config.csv.as_deref() {
+        let csv_path = resolve_csv_path(csv_dir);
+        let csv_progress = spinner(&format!("Writing CSV to {}", csv_path.display()));
+        write_csv(&csv_path, &courses)?;
+        csv_progress.finish_with_message(format!("CSV written to {}", csv_path.display()));
+
+        println!(
+            "Wrote {} sections{} for {} ({}) to {}",
+            courses.len(),
+            config
+                .subject
+                .as_deref()
+                .map(|subject| format!(" for subject {subject}"))
+                .unwrap_or_default(),
+            selected_term.description,
+            selected_term.code,
+            csv_path.display()
+        );
+    }
+
+    if let Some(calendar_dir) = config.calendar.as_deref() {
+        let calendar_dir = resolve_calendar_dir(calendar_dir);
+        let calendar_progress = spinner(&format!(
+            "Writing subject calendars to {}",
+            calendar_dir.display()
+        ));
+        write_subject_calendars(&calendar_dir, &selected_term, &courses)?;
+        calendar_progress.finish_with_message(format!(
+            "Subject calendars written to {}",
+            calendar_dir.display()
+        ));
+        println!(
+            "Wrote subject calendars for {} ({}) to {}",
+            selected_term.description,
+            selected_term.code,
+            calendar_dir.display()
+        );
+    }
+
+    if config.csv.is_none() && config.calendar.is_none() {
+        println!(
+            "Fetched {} sections{} for {} ({}). No files written. Use `--csv`, `--calendar`, or both.",
+            courses.len(),
+            config
+                .subject
+                .as_deref()
+                .map(|subject| format!(" for subject {subject}"))
+                .unwrap_or_default(),
+            selected_term.description,
+            selected_term.code,
+        );
+        println!("Examples:");
+        println!("  cargo run -- --term-code {} --csv", selected_term.code);
+        println!("  cargo run -- --term-code {} --calendar", selected_term.code);
+        println!(
+            "  cargo run -- --term-code {} --csv --calendar",
+            selected_term.code
+        );
+    }
 
     Ok(())
 }
@@ -188,12 +268,30 @@ fn read_config() -> ScrapeConfig {
         .take()
         .map(|term| term.trim().to_string())
         .filter(|term| !term.is_empty());
-    config.calendar_dir = config
-        .calendar_dir
+    config.csv = config
+        .csv
+        .take()
+        .map(|path| path.trim().to_string())
+        .filter(|path| !path.is_empty());
+    config.calendar = config
+        .calendar
         .take()
         .map(|path| path.trim().to_string())
         .filter(|path| !path.is_empty());
     config
+}
+
+fn resolve_csv_path(raw: &str) -> PathBuf {
+    let path = Path::new(raw);
+    if path.extension().and_then(|ext| ext.to_str()) == Some("csv") {
+        path.to_path_buf()
+    } else {
+        path.join("output.csv")
+    }
+}
+
+fn resolve_calendar_dir(raw: &str) -> PathBuf {
+    PathBuf::from(raw)
 }
 
 fn build_client() -> Result<reqwest::Client> {
@@ -342,6 +440,34 @@ fn print_terms(terms: &[Term]) {
     println!("Use `--list-terms` to print this list explicitly.");
 }
 
+fn spinner(message: &str) -> ProgressBar {
+    let progress = ProgressBar::new_spinner();
+    progress.set_style(
+        ProgressStyle::with_template("{spinner:.green} {msg}")
+            .expect("valid spinner template"),
+    );
+    progress.set_message(message.to_string());
+    progress.enable_steady_tick(std::time::Duration::from_millis(100));
+    progress
+}
+
+fn progress_bar(message: &str) -> ProgressBar {
+    let progress = ProgressBar::new_spinner();
+    progress.set_style(
+        ProgressStyle::with_template("{spinner:.green} {msg}")
+            .expect("valid progress template"),
+    );
+    progress.set_message(message.to_string());
+    progress.enable_steady_tick(std::time::Duration::from_millis(100));
+    progress
+}
+
+fn progress_style() -> ProgressStyle {
+    ProgressStyle::with_template("{bar:40.cyan/blue} {pos:>4}/{len:4} {msg}")
+        .expect("valid progress bar template")
+        .progress_chars("##-")
+}
+
 fn term_year(term: &Term) -> Option<String> {
     term.description
         .chars()
@@ -407,6 +533,7 @@ async fn fetch_all_courses(
     term_code: &str,
     unique_session_id: &str,
     subject: Option<&str>,
+    progress: &ProgressBar,
 ) -> Result<Vec<Course>> {
     let mut courses = Vec::new();
     let mut page_offset = 0usize;
@@ -434,9 +561,17 @@ async fn fetch_all_courses(
 
         if total_count.is_none() {
             total_count = response.total_count;
+            if let Some(total) = total_count {
+                progress.set_length(total as u64);
+                progress.set_style(progress_style());
+            }
         }
 
         let batch_count = response.data.len();
+        progress.inc(batch_count as u64);
+        progress.set_message(format!(
+            "Fetching sections for term {term_code} (offset {page_offset})"
+        ));
         courses.extend(
             response
                 .data
@@ -463,9 +598,15 @@ async fn fetch_all_courses(
     Ok(courses)
 }
 
-fn write_csv(output_path: &str, courses: &[Course]) -> Result<()> {
+fn write_csv(output_path: &Path, courses: &[Course]) -> Result<()> {
+    if let Some(parent) = output_path.parent().filter(|parent| !parent.as_os_str().is_empty()) {
+        fs::create_dir_all(parent).with_context(|| {
+            format!("failed to create CSV output directory at {}", parent.display())
+        })?;
+    }
+
     let file = File::create(output_path)
-        .with_context(|| format!("failed to create CSV output at {output_path}"))?;
+        .with_context(|| format!("failed to create CSV output at {}", output_path.display()))?;
     let mut writer = Writer::from_writer(file);
 
     writer.write_record([
@@ -569,45 +710,93 @@ fn write_csv(output_path: &str, courses: &[Course]) -> Result<()> {
     Ok(())
 }
 
-fn write_subject_calendars(output_dir: &str, term: &Term, courses: &[Course]) -> Result<()> {
+fn write_subject_calendars(output_dir: &Path, term: &Term, courses: &[Course]) -> Result<()> {
     fs::create_dir_all(output_dir)
-        .with_context(|| format!("failed to create calendar output directory at {output_dir}"))?;
+        .with_context(|| format!("failed to create calendar output directory at {}", output_dir.display()))?;
 
-    let mut calendars: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    clear_term_calendars(output_dir, &term.code)?;
+
+    let mut calendars: BTreeMap<String, SubjectCalendar> = BTreeMap::new();
     let generated_at = format_ics_timestamp(Local::now().naive_local());
 
     for course in courses {
-        let subject = text(course.subject.as_deref());
-        if subject.is_empty() {
+        let subject_code = text(course.subject.as_deref());
+        if subject_code.is_empty() {
             continue;
         }
 
+        let subject_name = text(course.subject_description.as_deref());
+        let calendar = calendars
+            .entry(subject_code.clone())
+            .or_insert_with(|| SubjectCalendar {
+                subject_code: subject_code.clone(),
+                subject_name: subject_name.clone(),
+                events: Vec::new(),
+            });
+
+        if calendar.subject_name.is_empty() && !subject_name.is_empty() {
+            calendar.subject_name = subject_name;
+        }
+
         for event in build_calendar_events(term, course, &generated_at) {
-            calendars.entry(subject.clone()).or_default().push(event);
+            calendar.events.push(event);
         }
     }
 
-    for (subject, events) in calendars {
+    for (_, calendar_data) in calendars {
         let mut calendar = Vec::new();
         calendar.push("BEGIN:VCALENDAR".to_string());
         calendar.push("VERSION:2.0".to_string());
         calendar.push("PRODID:-//usfcoursehelper//USF Subject Calendar//EN".to_string());
         calendar.push("CALSCALE:GREGORIAN".to_string());
+        let display_subject = if calendar_data.subject_name.is_empty() {
+            calendar_data.subject_code.clone()
+        } else {
+            calendar_data.subject_name.clone()
+        };
         calendar.push(format!(
             "X-WR-CALNAME:{} {}",
-            escape_ics_text(&subject),
+            escape_ics_text(&display_subject),
             escape_ics_text(&term.description)
         ));
-        calendar.extend(events);
+        calendar.extend(calendar_data.events);
         calendar.push("END:VCALENDAR".to_string());
 
-        let file_name = format!("{}-{}.ics", sanitize_filename(&subject), term.code);
-        let file_path = format!("{output_dir}/{file_name}");
+        let file_name = format!(
+            "{}-{}.ics",
+            sanitize_filename(&calendar_data.subject_code),
+            term.code
+        );
+        let file_path = output_dir.join(file_name);
         fs::write(&file_path, calendar.join("\r\n") + "\r\n")
-            .with_context(|| format!("failed to write subject calendar to {file_path}"))?;
+            .with_context(|| format!("failed to write subject calendar to {}", file_path.display()))?;
     }
 
     Ok(())
+}
+
+fn clear_term_calendars(output_dir: &Path, term_code: &str) -> Result<()> {
+    for entry in fs::read_dir(output_dir)
+        .with_context(|| format!("failed to read calendar output directory {}", output_dir.display()))?
+    {
+        let entry = entry?;
+        let path = entry.path();
+        let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or_default();
+
+        if path.is_file() && file_name.ends_with(&format!("-{term_code}.ics")) {
+            fs::remove_file(&path)
+                .with_context(|| format!("failed to remove old calendar {}", path.display()))?;
+        }
+    }
+
+    Ok(())
+}
+
+#[derive(Debug, Default)]
+struct SubjectCalendar {
+    subject_code: String,
+    subject_name: String,
+    events: Vec<String>,
 }
 
 fn build_calendar_events(term: &Term, course: &Course, generated_at: &str) -> Vec<String> {
@@ -670,7 +859,7 @@ fn build_calendar_events(term: &Term, course: &Course, generated_at: &str) -> Ve
 }
 
 fn build_event_description(course: &Course, primary_instructor: &str, primary_email: Option<&str>) -> String {
-    let mut lines = Vec::new();
+    let mut parts = Vec::new();
 
     let subject_course = text(course.subject_course.as_deref());
     let crn = text(course.course_reference_number.as_deref());
@@ -679,28 +868,28 @@ fn build_event_description(course: &Course, primary_instructor: &str, primary_em
     let campus = text(course.campus_description.as_deref());
 
     if !subject_course.is_empty() {
-        lines.push(format!("Course: {subject_course}"));
+        parts.push(format!("Course: {subject_course}"));
     }
     if !crn.is_empty() {
-        lines.push(format!("CRN: {crn}"));
+        parts.push(format!("CRN: {crn}"));
     }
     if !primary_instructor.is_empty() {
-        lines.push(format!("Instructor: {primary_instructor}"));
+        parts.push(format!("Instructor: {primary_instructor}"));
     }
     if let Some(email) = primary_email.filter(|email| !email.is_empty()) {
-        lines.push(format!("Email: {email}"));
+        parts.push(format!("Email: {email}"));
     }
     if !schedule_type.is_empty() {
-        lines.push(format!("Schedule Type: {schedule_type}"));
+        parts.push(format!("Schedule Type: {schedule_type}"));
     }
     if !method.is_empty() {
-        lines.push(format!("Instructional Method: {method}"));
+        parts.push(format!("Instructional Method: {method}"));
     }
     if !campus.is_empty() {
-        lines.push(format!("Campus: {campus}"));
+        parts.push(format!("Campus: {campus}"));
     }
 
-    lines.join("\\n")
+    parts.join(" | ")
 }
 
 #[allow(clippy::too_many_arguments)]

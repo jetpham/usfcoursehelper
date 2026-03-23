@@ -1,6 +1,7 @@
 /target
 .direnv/
 output.csv
+*.ics
 subject-calendars/
 cookie.txt
 uniqueSessionId.txt

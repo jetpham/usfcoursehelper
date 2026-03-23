@@ -22,8 +22,26 @@
           inherit system overlays;
         };
         rustToolchain = pkgs.rust-bin.stable.latest.default;
+        packageName = "usfcoursehelper";
+        appPackage = pkgs.rustPlatform.buildRustPackage {
+          pname = packageName;
+          version = "0.1.0";
+          src = ./.;
+          cargoLock = {
+            lockFile = ./Cargo.lock;
+          };
+          nativeBuildInputs = with pkgs; [ pkg-config ];
+          buildInputs = with pkgs; [ openssl ];
+        };
       in
       {
+        packages.default = appPackage;
+
+        apps.default = {
+          type = "app";
+          program = "${appPackage}/bin/${packageName}";
+        };
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             rustToolchain
