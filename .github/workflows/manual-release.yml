@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: release-${{ github.ref }}
@@ -89,6 +90,8 @@ jobs:
 
       - name: Enable Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
+        with:
+          use-flakehub: false
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -144,11 +147,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v16
-
-      - name: Enable Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
+      - name: Install Windows build dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y clang lld zip xz-utils
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -165,8 +169,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          nix shell nixpkgs#clang nixpkgs#lld nixpkgs#zip nixpkgs#xz -c \
-            cargo xwin build --locked --release --target ${{ matrix.target }}
+          cargo xwin build --locked --release --target ${{ matrix.target }}
 
       - name: Package artifacts
         shell: bash
@@ -174,13 +177,12 @@ jobs:
           set -euo pipefail
           mkdir -p dist
           package_stem="${BINARY_NAME}-${{ needs.prepare.outputs.release_label }}-${{ matrix.platform_id }}"
-          nix shell nixpkgs#zip nixpkgs#xz -c \
-            bash ./.github/scripts/package-release.sh \
-              "target/${{ matrix.target }}/release/${BINARY_NAME}.exe" \
-              "${BINARY_NAME}.exe" \
-              "$package_stem" \
-              dist \
-              "${README_PATH}"
+          bash ./.github/scripts/package-release.sh \
+            "target/${{ matrix.target }}/release/${BINARY_NAME}.exe" \
+            "${BINARY_NAME}.exe" \
+            "$package_stem" \
+            dist \
+            "${README_PATH}"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -211,6 +213,8 @@ jobs:
 
       - name: Enable Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
+        with:
+          use-flakehub: false
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -255,6 +259,8 @@ jobs:
 
       - name: Enable Nix cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
+        with:
+          use-flakehub: false
 
       - name: Download macOS x86_64 artifact
         uses: actions/download-artifact@v4
