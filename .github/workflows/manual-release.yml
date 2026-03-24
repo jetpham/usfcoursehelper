@@ -88,11 +88,6 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
 
-      - name: Enable Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
-        with:
-          use-flakehub: false
-
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -133,56 +128,78 @@ jobs:
 
   build-windows:
     name: Windows ${{ matrix.target }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     needs: prepare
     strategy:
       fail-fast: false
       matrix:
         include:
-          - target: x86_64-pc-windows-msvc
+          - runner: windows-2022
+            target: x86_64-pc-windows-msvc
             platform_id: windows-x86_64
-          - target: aarch64-pc-windows-msvc
+          - runner: windows-11-arm
+            target: aarch64-pc-windows-msvc
             platform_id: windows-aarch64
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Windows build dependencies
-        shell: bash
-        run: |
-          set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y clang lld zip xz-utils
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
 
-      - name: Install cargo-xwin
-        shell: bash
-        run: |
-          set -euo pipefail
-          cargo install cargo-xwin --locked
-
       - name: Build binary
-        shell: bash
+        shell: pwsh
+        run: cargo build --locked --release --target ${{ matrix.target }}
+
+      - name: Stage raw binary
+        shell: pwsh
         run: |
-          set -euo pipefail
-          cargo xwin build --locked --release --target ${{ matrix.target }}
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item "target/${{ matrix.target }}/release/${env:BINARY_NAME}.exe" "dist/${env:BINARY_NAME}-${{ needs.prepare.outputs.release_label }}-${{ matrix.platform_id }}.exe"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.BINARY_NAME }}-${{ needs.prepare.outputs.release_label }}-${{ matrix.platform_id }}-raw
+          path: dist/*.exe
+
+  package-windows:
+    name: Package Windows artifacts
+    runs-on: ubuntu-latest
+    needs:
+      - prepare
+      - build-windows
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform_id: windows-x86_64
+          - platform_id: windows-aarch64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download raw Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.BINARY_NAME }}-${{ needs.prepare.outputs.release_label }}-${{ matrix.platform_id }}-raw
+          path: dist
 
       - name: Package artifacts
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p dist
           package_stem="${BINARY_NAME}-${{ needs.prepare.outputs.release_label }}-${{ matrix.platform_id }}"
           bash ./.github/scripts/package-release.sh \
-            "target/${{ matrix.target }}/release/${BINARY_NAME}.exe" \
+            "dist/${package_stem}.exe" \
             "${BINARY_NAME}.exe" \
             "$package_stem" \
             dist \
             "${README_PATH}"
+          rm -f "dist/${package_stem}.exe"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -210,11 +227,6 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
-
-      - name: Enable Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
-        with:
-          use-flakehub: false
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -256,11 +268,6 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
-
-      - name: Enable Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
-        with:
-          use-flakehub: false
 
       - name: Download macOS x86_64 artifact
         uses: actions/download-artifact@v4
@@ -307,7 +314,7 @@ jobs:
     needs:
       - prepare
       - build-linux
-      - build-windows
+      - package-windows
       - build-macos
       - build-macos-universal
 
